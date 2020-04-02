@@ -1,4 +1,5 @@
 package patientprogram;
+import java.sql.Statement;
 import java.util.*;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -16,15 +17,22 @@ public class PatientProgram
     /**
      * @param args the command line arguments
      */
+    
     public static void main(String[] args) 
     {
+        Statement stmt = null;
+        Connection con = null;
         try
         {
+            JFrame c = null;
             String host = "jdbc:derby://localhost:1527/contact";
             String uName = "nbuser";
             String uPass = "nbuser";
             
-            Connection con = DriverManager.getConnection(host, uName, uPass);
+            con = DriverManager.getConnection(host, uName, uPass);
+            stmt = con.createStatement();
+            
+            
             
             Scanner in = new Scanner(System.in);
             boolean on = true;
@@ -32,7 +40,7 @@ public class PatientProgram
             while(on)
             {
                 String selection = JOptionPane.showInputDialog("########Welcome to the Patient Tracking System########\n"
-           + "Select 1 to add a patient\n");
+                + "Select 1 to add a patient\n");
 
                 if(selection.equals("1"))
                 {
@@ -49,7 +57,7 @@ public class PatientProgram
                     + "Patient Name: " + addPatient.patientFirst + " " + addPatient.patientLast + "\n"
                     + "Patient Age: " + addPatient.patientAge + "\n"
                     + "Patient Phone: " + addPatient.patientPhone + "\n"
-                    + "Patient Address: " + addPatient.patientAddress
+                    + "Patient Address: \n" + addPatient.patientAddress
                     + "Yes/No");
 
 
