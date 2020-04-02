@@ -16,12 +16,14 @@ public class AddPatient
 {
     String patientFirst;
     String patientLast;
-    String patientAge;
+    int patientAge;
     String patientPhone;
     String patientAddress;
     
-    public void patientAdd(String patientFirst, String patientLast, String patientAge, String patientPhone, String patientAddress)
+    public void patientAdd(String patientFirst, String patientLast, int patientAge, String patientPhone, String patientAddress)
     {
+        Connection con = null;
+        Statement stmt = null;
                
         try
         {
@@ -35,7 +37,12 @@ public class AddPatient
                 String uName = "nbuser";
                 String uPass = "nbuser";
             
-            Connection con = DriverManager.getConnection(host, uName, uPass);
+                con = DriverManager.getConnection(host, uName, uPass);
+                stmt = con.createStatement();
+                stmt.executeUpdate("INSERT INTO PATIENT(PFName,PLName, PAge, PPhone, PAddress) VALUE( '"+patientFirst+"','"+patientLast+"',"+patientAge+",'"+patientPhone+"', '"+patientAddress+"'");
+                stmt.close();
+                
+                
         }
         
         catch(SQLException err)

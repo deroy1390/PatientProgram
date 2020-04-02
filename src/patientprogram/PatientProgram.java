@@ -50,9 +50,10 @@ public class PatientProgram
                     String patientAge = JOptionPane.showInputDialog("Enter Patient Age: ");
                     String patientPhone = JOptionPane.showInputDialog("Enter Patient Phone: ");
                     String patientAddress = JOptionPane.showInputDialog("Enter Patient Address: ");
-
+                    
+                    int age = Integer.parseInt(patientAge);
                     AddPatient addPatient = new AddPatient();
-                    addPatient.patientAdd(patientFirst, patientLast, patientAge, patientPhone, patientAddress);
+                    addPatient.patientAdd(patientFirst, patientLast, age, patientPhone, patientAddress);
                     String verify = JOptionPane.showInputDialog("Is the following information correct?\n"
                     + "Patient Name: " + addPatient.patientFirst + " " + addPatient.patientLast + "\n"
                     + "Patient Age: " + addPatient.patientAge + "\n"
