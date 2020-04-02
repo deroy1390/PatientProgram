@@ -26,7 +26,9 @@ public class PatientProgram
             
             if(selection.equals("1"))
             {
-                
+                String patientFirst = JOptionPane.showInputDialog("####Enter New Patient Information####"
+                + "Enter Patient First Name: ");
+                String patientLast = JOptionPane.showInputDialog("Enter Patient Last Name: ");
             }
             
         }

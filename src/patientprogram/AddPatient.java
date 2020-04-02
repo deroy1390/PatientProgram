@@ -1,14 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package patientprogram;
 
 /**
  *
- * @author ethan
+ * @author Ethan DeRoy
  */
-public class AddPatient {
+public class AddPatient 
+{
+    String patientFirst;
+    String patientLast;
+    String patientAge;
+    String patientPhone;
+    String patientAddress;
     
+    public void AddPatient(String patientFirst, String patientLast, String patientAge, String patientPhone, String patientAddress)
+    {
+        this.patientFirst = patientFirst;
+        this.patientLast = patientLast;
+        this.patientAge = patientAge;
+        this.patientPhone = patientPhone;
+        this.patientAddress = patientAddress;
+    }
 }
