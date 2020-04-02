@@ -12,7 +12,7 @@ public class AddPatient
     String patientPhone;
     String patientAddress;
     
-    public void AddPatient(String patientFirst, String patientLast, String patientAge, String patientPhone, String patientAddress)
+    public void patientAdd(String patientFirst, String patientLast, String patientAge, String patientPhone, String patientAddress)
     {
         this.patientFirst = patientFirst;
         this.patientLast = patientLast;

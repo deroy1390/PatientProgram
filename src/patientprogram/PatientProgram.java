@@ -20,15 +20,38 @@ public class PatientProgram
         while(on)
         {
             String selection = JOptionPane.showInputDialog("########Welcome to the Patient Tracking System########\n"
-       + "Select 1 to add a patient\n"
-                + "Select 2 to lookup a patient"
-                + "Select 3 to add patient insurance");
+       + "Select 1 to add a patient\n");
             
             if(selection.equals("1"))
             {
-                String patientFirst = JOptionPane.showInputDialog("####Enter New Patient Information####"
+                String patientFirst = JOptionPane.showInputDialog("####Enter New Patient Information####\n"
                 + "Enter Patient First Name: ");
                 String patientLast = JOptionPane.showInputDialog("Enter Patient Last Name: ");
+                String patientAge = JOptionPane.showInputDialog("Enter Patient Age: ");
+                String patientPhone = JOptionPane.showInputDialog("Enter Patient Phone: ");
+                String patientAddress = JOptionPane.showInputDialog("Enter Patient Address: ");
+                
+                AddPatient addPatient = new AddPatient();
+                addPatient.patientAdd(patientFirst, patientLast, patientAge, patientPhone, patientAddress);
+                String verify = JOptionPane.showInputDialog("Is the following information correct?\n"
+                + "Patient Name: " + addPatient.patientFirst + " " + addPatient.patientLast + "\n"
+                + "Patient Age: " + addPatient.patientAge + "\n"
+                + "Patient Phone: " + addPatient.patientPhone + "\n"
+                + "Patient Address: " + addPatient.patientAddress
+                + "Yes/No");
+                
+         
+                if(verify.equalsIgnoreCase("Yes"))
+                {
+                        System.out.println("Patient Added");
+                         on = false;   
+                }
+                
+                else
+                {
+                    
+                }
+                
             }
             
         }
