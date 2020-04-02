@@ -1,5 +1,6 @@
 package patientprogram;
 import java.util.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -14,6 +15,18 @@ public class PatientProgram
     public static void main(String[] args) 
     {
         Scanner in = new Scanner(System.in);
+        boolean on = true;
+        
+        while(on)
+        {
+            JOptionPane.showInputDialog("########Welcome to the Patient Tracking System########\n"
+       + "Select 1 to add a patient\n"
+                + "Select 2 to lookup a patient"
+                + "Select 3 to add patient insurance");
+        }
+        
+        
+        
     }
     
 }
