@@ -19,10 +19,16 @@ public class PatientProgram
         
         while(on)
         {
-            JOptionPane.showInputDialog("########Welcome to the Patient Tracking System########\n"
+            String selection = JOptionPane.showInputDialog("########Welcome to the Patient Tracking System########\n"
        + "Select 1 to add a patient\n"
                 + "Select 2 to lookup a patient"
                 + "Select 3 to add patient insurance");
+            
+            if(selection.equals("1"))
+            {
+                
+            }
+            
         }
         
         
