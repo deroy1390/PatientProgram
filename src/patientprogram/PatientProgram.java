@@ -1,5 +1,6 @@
 package patientprogram;
 import java.util.*;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -43,7 +44,9 @@ public class PatientProgram
          
                 if(verify.equalsIgnoreCase("Yes"))
                 {
-                        System.out.println("Patient Added");
+                    JFrame f = null;
+                   
+                        JOptionPane.showMessageDialog(f, "Patient Added");
                          on = false;   
                 }
                 
