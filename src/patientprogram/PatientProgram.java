@@ -50,10 +50,7 @@ public class PatientProgram
                          on = false;   
                 }
                 
-                else
-                {
-                    
-                }
+                
                 
             }
             
