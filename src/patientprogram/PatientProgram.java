@@ -18,7 +18,7 @@ public class PatientProgram
      * @param args the command line arguments
      */
     
-    public static void main(String[] args) 
+    public static void main(String[] args) throws Exception 
     {
         Statement stmt = null;
         Connection con = null;
@@ -30,7 +30,7 @@ public class PatientProgram
             String uPass = "nbuser";
             
             con = DriverManager.getConnection(host, uName, uPass);
-            stmt = con.createStatement();
+            
             
             
             
@@ -40,15 +40,25 @@ public class PatientProgram
             while(on)
             {
                 String selection = JOptionPane.showInputDialog("########Welcome to the Patient Tracking System########\n"
-                + "Select 1 to add a patient\n");
+                + "Type 1 to add a patient\n"
+                + "Type 2 to remove a patient\n"
+                + "Type 3 to end program\n");
 
                 if(selection.equals("1"))
                 {
+                    
                     String patientFirst = JOptionPane.showInputDialog("####Enter New Patient Information####\n"
                     + "Enter Patient First Name: ");
                     String patientLast = JOptionPane.showInputDialog("Enter Patient Last Name: ");
                     String patientAge = JOptionPane.showInputDialog("Enter Patient Age: ");
-                    String patientPhone = JOptionPane.showInputDialog("Enter Patient Phone: ");
+                    String patientPhone = JOptionPane.showInputDialog("Enter Patient Phone (format xxx-xxx-xxxx): ");
+                    while(patientPhone.length()!= 12)
+                    {
+                        String temp = JOptionPane.showInputDialog("Sorry, improper format, please re-enter below");
+                        patientPhone = temp;
+                        
+                    }
+                    
                     String patientAddress = JOptionPane.showInputDialog("Enter Patient Address: ");
                     
                     int age = Integer.parseInt(patientAge);
@@ -59,20 +69,53 @@ public class PatientProgram
                     + "Patient Age: " + addPatient.patientAge + "\n"
                     + "Patient Phone: " + addPatient.patientPhone + "\n"
                     + "Patient Address: \n" + addPatient.patientAddress
-                    + "Yes/No");
-
-
+                    + "Yes/No");  
+                    
+                    
+                                     
                     if(verify.equalsIgnoreCase("Yes"))
                     {
                         JFrame f = null;
 
                             JOptionPane.showMessageDialog(f, "Patient Added");
-                             on = false;   
+                              
                     }
 
 
 
                 }
+                
+                if(selection.equals("2"))
+                {
+                    
+                    String patientFirst = JOptionPane.showInputDialog("####Enter New Patient Information####\n"
+                    + "Enter Patient First Name: ");
+                    String patientLast = JOptionPane.showInputDialog("Enter Patient Last Name: ");                 
+               
+                    AddPatient removePatient = new AddPatient();
+                    removePatient.patientRemove(patientFirst, patientLast);
+                    String verify = JOptionPane.showInputDialog("Is the following information correct (Yes/No)?\n"
+                    + "Patient Name: " + removePatient.patientFirst + " " + removePatient.patientLast + "\n");
+                    
+                    
+                    
+                                     
+                    if(verify.equalsIgnoreCase("Yes"))
+                    {
+                        JFrame f = null;
+
+                            JOptionPane.showMessageDialog(f, "Patient Removed");
+                                
+                    }
+                }
+                
+                if(selection.equals("3"))
+                {
+                    on = false;
+                }
+
+
+
 
             }
 

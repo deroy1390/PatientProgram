@@ -1,6 +1,7 @@
 package patientprogram;
 
-import java.sql.Statement;
+import java.sql.PreparedStatement;
+import java.sql.*;
 import java.util.*;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -36,11 +37,59 @@ public class AddPatient
                 String host = "jdbc:derby://localhost:1527/contact";
                 String uName = "nbuser";
                 String uPass = "nbuser";
-            
+                
+                
                 con = DriverManager.getConnection(host, uName, uPass);
                 stmt = con.createStatement();
-                stmt.executeUpdate("INSERT INTO PATIENT(PFName,PLName, PAge, PPhone, PAddress) VALUE( '"+patientFirst+"','"+patientLast+"',"+patientAge+",'"+patientPhone+"', '"+patientAddress+"'");
+                String SQL = ("INSERT INTO Patient VALUES ('"+patientFirst+"', '"+patientLast+"',"+patientAge+",'"+patientPhone+"', '"+patientAddress+"')");
+                stmt.executeUpdate(SQL);
+                
+                patientFirst = ("");
+                patientLast = ("");
+                patientAge = 0;
+                patientPhone = ("");
+                patientAddress = ("");
+                con.close();
                 stmt.close();
+                
+                
+                
+                
+                
+                
+        }
+        
+        catch(SQLException err)
+        {
+            JFrame z = null;
+            JOptionPane.showMessageDialog(z,err.getMessage());
+        }
+    }
+    
+    public void patientRemove(String patientFirst, String patientLast)
+    {
+        Connection con = null;
+        Statement stmt = null;
+               
+        try
+        {
+                this.patientFirst = patientFirst;
+                this.patientLast = patientLast;
+                
+                
+                String host = "jdbc:derby://localhost:1527/contact";
+                String uName = "nbuser";
+                String uPass = "nbuser";
+                
+                
+                con = DriverManager.getConnection(host, uName, uPass);
+                stmt = con.createStatement();
+                String SQL = ("DELETE FROM Patient WHERE PFNAME = ('"+patientFirst+"') AND PLNAME = ('"+patientLast+"')");
+                stmt.executeUpdate(SQL);
+                
+                
+                
+                
                 
                 
         }
